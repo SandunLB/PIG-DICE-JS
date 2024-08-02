@@ -33,3 +33,13 @@ const init = function () {
   player0El.classList.add('player--active');
   player1El.classList.remove('player--active');
 };
+
+init();
+
+const switchPlayer = function () {
+  document.getElementById(`current--${activePlayer}`).textContent = 0;
+  currentScore = 0;
+  activePlayer = activePlayer === 0 ? 1 : 0;
+  player0El.classList.toggle('player--active');
+  player1El.classList.toggle('player--active');
+};
