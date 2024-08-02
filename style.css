@@ -20,6 +20,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  animation: backgroundAnimation 10s infinite alternate;
+}
+
+@keyframes backgroundAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
 }
 
 /* LAYOUT */
@@ -29,11 +40,22 @@ main {
   height: 60rem;
   background-color: rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(200px);
-  filter: blur();
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
   border-radius: 9px;
   overflow: hidden;
   display: flex;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .player {
@@ -54,6 +76,18 @@ main {
   word-spacing: 2px;
   font-weight: 300;
   margin-bottom: 1rem;
+  animation: textSlideIn 1s ease-out;
+}
+
+@keyframes textSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .score {
@@ -61,6 +95,8 @@ main {
   font-weight: 300;
   color: #c7365f;
   margin-bottom: auto;
+  animation: textSlideIn 1s ease-out 0.5s;
+  animation-fill-mode: backwards;
 }
 
 .player--active {
@@ -86,6 +122,18 @@ main {
   padding: 2rem;
   text-align: center;
   transition: all 0.75s;
+  animation: currentFadeIn 1s ease-in-out;
+}
+
+@keyframes currentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .current-label {
@@ -113,14 +161,21 @@ main {
   cursor: pointer;
   font-weight: 400;
   transition: all 0.2s;
-
-  background-color: white;
   background-color: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(10px);
-
   padding: 0.7rem 2.5rem;
   border-radius: 50rem;
   box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
+  animation: btnBounce 1s infinite alternate;
+}
+
+@keyframes btnBounce {
+  from {
+    transform: translate(-50%, 0);
+  }
+  to {
+    transform: translate(-50%, -10px);
+  }
 }
 
 .btn::first-letter {
@@ -155,13 +210,37 @@ main {
   transform: translateX(-50%);
   height: 10rem;
   box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+  animation: diceSpin 3s infinite;
+}
+
+@keyframes diceSpin {
+  from {
+    transform: translateX(-50%) rotate(0);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
 }
 
 .player--winner {
   background-color: #2f2f2f;
+  animation: winnerGlow 1.5s infinite alternate;
+}
+
+@keyframes winnerGlow {
+  from {
+    box-shadow: 0 0 10px #c7365f;
+  }
+  to {
+    box-shadow: 0 0 20px #c7365f;
+  }
 }
 
 .player--winner .name {
   font-weight: 700;
   color: #c7365f;
+}
+
+.hidden {
+  display: none;
 }
