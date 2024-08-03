@@ -43,3 +43,57 @@ const switchPlayer = function () {
   player0El.classList.toggle('player--active');
   player1El.classList.toggle('player--active');
 };
+
+
+btnRoll.addEventListener('click', function () {
+  if (playing) {
+    
+    const dice = Math.trunc(Math.random() * 6) + 1;
+
+    
+    diceEl.classList.remove('hidden');
+    diceEl.src = `dice-${dice}.png`;
+
+    
+    if (dice !== 1) {
+      
+      currentScore += dice;
+      document.getElementById(
+        `current--${activePlayer}`
+      ).textContent = currentScore;
+    } else {
+      
+      switchPlayer();
+    }
+  }
+});
+
+btnHold.addEventListener('click', function () {
+  if (playing) {
+    
+    scores[activePlayer] += currentScore;
+    
+
+    document.getElementById(`score--${activePlayer}`).textContent =
+      scores[activePlayer];
+
+   
+    if (scores[activePlayer] >= 100) {
+     
+      playing = false;
+      diceEl.classList.add('hidden');
+
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.add('player--winner');
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.remove('player--active');
+    } else {
+     
+      switchPlayer();
+    }
+  }
+});
+
+btnNew.addEventListener('click', init);
