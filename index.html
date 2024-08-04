@@ -15,17 +15,9 @@
     <div class="star" style="top: 75%; left: 25%;"></div>
     <div class="star" style="top: 60%; left: 55%;"></div>
     <div class="star" style="top: 35%; left: 85%;"></div>
-    <div class="star" style="top: 15%; left: 65%;"></div>
-    <div class="star" style="top: 80%; left: 35%;"></div>
-    <div class="star" style="top: 20%; left: 30%;"></div>
-    <div class="star" style="top: 45%; left: 50%;"></div>
-    <div class="star" style="top: 70%; left: 70%;"></div>
-    <div class="star" style="top: 30%; left: 90%;"></div>
-    <div class="star" style="top: 40%; left: 20%;"></div>
-    <div class="star" style="top: 50%; left: 80%;"></div>
-    <div class="star" style="top: 75%; left: 60%;"></div>
-    <div class="star" style="top: 85%; left: 40%;"></div>
+    
   </div>
+  
   <main>
     <section class="player player--0 player--active">
       <h2 class="name" id="name--0">Player 1</h2>
@@ -50,5 +42,21 @@
     <button class="btn btn--hold">📥 Hold</button>
   </main>
   <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const starsContainer = document.querySelector('.stars');
+      const numStars = 100; // Adjust this number as needed
+  
+      for (let i = 0; i < numStars; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.animationDuration = `${Math.random() * 20 + 10}s`; // Random duration for each star
+        starsContainer.appendChild(star);
+      }
+    });
+  </script>
+  
 </body>
 </html>
