@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css');
 
 * {
   margin: 0;
@@ -15,21 +16,54 @@ body {
   font-family: 'Nunito', sans-serif;
   font-weight: 400;
   height: 100vh;
-  color: #333;
-  background: radial-gradient(circle at 50% 50%, #1a1a1d, #0c0c0c);
+  color: #ddd;
+  background: black;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  animation: backgroundAnimation 10s infinite alternate;
+  position: relative;
 }
 
-@keyframes backgroundAnimation {
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.star {
+  width: 2px;
+  height: 2px;
+  background: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: twinkle 5s infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes starMovement {
   0% {
-    background-position: 0% 0%;
+    transform: translateY(0) translateX(0);
   }
   100% {
-    background-position: 100% 100%;
+    transform: translateY(100vh) translateX(100vw);
+  }
+}
+
+@keyframes starMovementBack {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  100% {
+    transform: translateY(-100vh) translateX(-100vw);
   }
 }
 
@@ -38,13 +72,14 @@ main {
   position: relative;
   width: 100rem;
   height: 60rem;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.2));
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
   border-radius: 20px;
   overflow: hidden;
   display: flex;
   animation: fadeIn 1s ease-in-out;
+  z-index: 2;
 }
 
 @keyframes fadeIn {
@@ -75,7 +110,7 @@ main {
   letter-spacing: 1px;
   word-spacing: 2px;
   font-weight: 700;
-  color: #ffc107;
+  color: #f8f9fa;
   margin-bottom: 1rem;
   animation: textSlideIn 1s ease-out;
 }
@@ -94,20 +129,20 @@ main {
 .score {
   font-size: 8rem;
   font-weight: 700;
-  color: #17a2b8;
+  color: #6c757d;
   margin-bottom: auto;
   animation: textSlideIn 1s ease-out 0.5s;
   animation-fill-mode: backwards;
 }
 
 .player--active {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.2));
 }
 .player--active .name {
   color: #28a745;
 }
 .player--active .score {
-  color: #dc3545;
+  color: #ffc107;
 }
 
 .player--active .current {
@@ -154,7 +189,7 @@ main {
   left: 50%;
   transform: translateX(-50%);
   color: #fff;
-  background: #6f42c1;
+  background: #343a40;
   border: none;
   font-family: inherit;
   font-size: 1.8rem;
@@ -166,6 +201,7 @@ main {
   border-radius: 50rem;
   box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.2);
   animation: btnBounce 1s infinite alternate;
+  z-index: 2;
 }
 
 @keyframes btnBounce {
@@ -210,6 +246,7 @@ main {
   height: 10rem;
   box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
   animation: diceSpin 3s infinite;
+  z-index: 2;
 }
 
 @keyframes diceSpin {
@@ -222,24 +259,110 @@ main {
 }
 
 .player--winner {
-  background-color: #28a745;
+  background-color: #343a40;
   animation: winnerGlow 1.5s infinite alternate;
 }
 
 @keyframes winnerGlow {
   from {
-    box-shadow: 0 0 10px #ffc107;
+    box-shadow: 0 0 10px #28a745;
   }
   to {
-    box-shadow: 0 0 20px #ffc107;
+    box-shadow: 0 0 20px #28a745;
   }
 }
 
 .player--winner .name {
   font-weight: 700;
-  color: #ffc107;
+  color: #28a745;
 }
 
 .hidden {
   display: none;
+}
+
+/* ICONS */
+.btn--new::before, .btn--roll::before, .btn--hold::before {
+  margin-right: 0.5rem;
+}
+
+.btn--new::before {
+  content: "\f021"; /* FontAwesome refresh icon */
+}
+
+.btn--roll::before {
+  content: "\f067"; /* FontAwesome plus-circle icon */
+}
+
+.btn--hold::before {
+  content: "\f04b"; /* FontAwesome play icon */
+}
+
+/* Generate Stars */
+@keyframes starMovement1 {
+  0% {
+    top: 0;
+    left: 0;
+    transform: translateY(0) translateX(0);
+  }
+  100% {
+    top: 100%;
+    left: 100%;
+    transform: translateY(100vh) translateX(100vw);
+  }
+}
+
+@keyframes starMovement2 {
+  0% {
+    top: 0;
+    left: 100%;
+    transform: translateY(0) translateX(0);
+  }
+  100% {
+    top: 100%;
+    left: 0;
+    transform: translateY(100vh) translateX(-100vw);
+  }
+}
+
+@keyframes starMovement3 {
+  0% {
+    top: 100%;
+    left: 0;
+    transform: translateY(0) translateX(0);
+  }
+  100% {
+    top: 0;
+    left: 100%;
+    transform: translateY(-100vh) translateX(100vw);
+  }
+}
+
+@keyframes starMovement4 {
+  0% {
+    top: 100%;
+    left: 100%;
+    transform: translateY(0) translateX(0);
+  }
+  100% {
+    top: 0;
+    left: 0;
+    transform: translateY(-100vh) translateX(-100vw);
+  }
+}
+
+.star:nth-child(1) {
+  animation: twinkle 5s infinite, starMovement1 10s linear infinite;
+}
+
+.star:nth-child(2) {
+  animation: twinkle 5s infinite, starMovement2 12s linear infinite;
+}
+
+.star:nth-child(3) {
+  animation: twinkle 5s infinite, starMovement3 15s linear infinite;
+}
+
+.star:nth-child(4) {
+  animation: twinkle 5s infinite, starMovement4 18s linear infinite;
 }

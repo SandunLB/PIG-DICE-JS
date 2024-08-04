@@ -1,36 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Pig Game</title>
-  </head>
-  <body>
-    <main>
-      <section class="player player--0 player--active">
-        <h2 class="name" id="name--0">Player 1</h2>
-        <p class="score" id="score--0">43</p>
-        <div class="current">
-          <p class="current-label">Current</p>
-          <p class="current-score" id="current--0">0</p>
-        </div>
-      </section>
-      <section class="player player--1">
-        <h2 class="name" id="name--1">Player 2</h2>
-        <p class="score" id="score--1">24</p>
-        <div class="current">
-          <p class="current-label">Current</p>
-          <p class="current-score" id="current--1">0</p>
-        </div>
-      </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Pig Game</title>
+</head>
+<body>
+  <div class="stars">
+    <div class="star" style="top: 10%; left: 15%;"></div>
+    <div class="star" style="top: 25%; left: 45%;"></div>
+    <div class="star" style="top: 50%; left: 75%;"></div>
+    <div class="star" style="top: 75%; left: 25%;"></div>
+    <div class="star" style="top: 60%; left: 55%;"></div>
+    <div class="star" style="top: 35%; left: 85%;"></div>
+    <div class="star" style="top: 15%; left: 65%;"></div>
+    <div class="star" style="top: 80%; left: 35%;"></div>
+    <div class="star" style="top: 20%; left: 30%;"></div>
+    <div class="star" style="top: 45%; left: 50%;"></div>
+    <div class="star" style="top: 70%; left: 70%;"></div>
+    <div class="star" style="top: 30%; left: 90%;"></div>
+    <div class="star" style="top: 40%; left: 20%;"></div>
+    <div class="star" style="top: 50%; left: 80%;"></div>
+    <div class="star" style="top: 75%; left: 60%;"></div>
+    <div class="star" style="top: 85%; left: 40%;"></div>
+  </div>
+  <main>
+    <section class="player player--0 player--active">
+      <h2 class="name" id="name--0">Player 1</h2>
+      <p class="score" id="score--0">43</p>
+      <div class="current">
+        <p class="current-label">Current</p>
+        <p class="current-score" id="current--0">0</p>
+      </div>
+    </section>
+    <section class="player player--1">
+      <h2 class="name" id="name--1">Player 2</h2>
+      <p class="score" id="score--1">24</p>
+      <div class="current">
+        <p class="current-label">Current</p>
+        <p class="current-score" id="current--1">0</p>
+      </div>
+    </section>
 
-      <img src="dice-5.png" alt="Playing dice" class="dice" />
-      <button class="btn btn--new">🔄 New game</button>
-      <button class="btn btn--roll">🎲 Roll dice</button>
-      <button class="btn btn--hold">📥 Hold</button>
-    </main>
-    <script src="script.js"></script>
-  </body>
+    <img src="dice-5.png" alt="Playing dice" class="dice" />
+    <button class="btn btn--new">🔄 New game</button>
+    <button class="btn btn--roll">🎲 Roll dice</button>
+    <button class="btn btn--hold">📥 Hold</button>
+  </main>
+  <script src="script.js"></script>
+</body>
 </html>
