@@ -369,7 +369,7 @@ main {
 /* Add this to your existing CSS */
 .set-score {
   position: absolute;
-  top: 52rem;
+  top: 2rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
