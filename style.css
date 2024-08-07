@@ -287,15 +287,15 @@ main {
 }
 
 .btn--new::before {
-  content: "\f021"; /* FontAwesome refresh icon */
+  content: "";
 }
 
 .btn--roll::before {
-  content: "\f067"; /* FontAwesome plus-circle icon */
+  content: ""; 
 }
 
 .btn--hold::before {
-  content: "\f04b"; /* FontAwesome play icon */
+  content: ""; /* FontAwesome play icon */
 }
 
 /* Generate Stars */
@@ -369,27 +369,47 @@ main {
 /* Add this to your existing CSS */
 .set-score {
   position: absolute;
-  top: 2rem;
+  top: 1rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
+  justify-content: center;
   z-index: 2;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  border-radius: 10px;
 }
 
 .input-score {
   font-family: inherit;
-  font-size: 1.8rem;
-  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  padding: 1rem;
   border: none;
   border-radius: 50rem;
   margin-right: 1rem;
-  width: 20rem;
+  width: 25rem;
   text-align: center;
   color: #343a40;
+  background: #fff;
 }
 
 .btn--set-score {
   padding: 1rem 2rem;
   font-size: 1.8rem;
+  border: none;
+  border-radius: 50rem;
+  background: #28a745;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn--set-score:hover {
+  background: #218838;
+}
+
+.btn--set-score:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5);
 }
