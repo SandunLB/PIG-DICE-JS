@@ -366,3 +366,30 @@ main {
 .star:nth-child(4) {
   animation: twinkle 5s infinite, starMovement4 18s linear infinite;
 }
+/* Add this to your existing CSS */
+.set-score {
+  position: absolute;
+  top: 52rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+.input-score {
+  font-family: inherit;
+  font-size: 1.8rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 50rem;
+  margin-right: 1rem;
+  width: 20rem;
+  text-align: center;
+  color: #343a40;
+}
+
+.btn--set-score {
+  padding: 1rem 2rem;
+  font-size: 1.8rem;
+}

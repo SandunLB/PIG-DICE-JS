@@ -84,5 +84,8 @@ btnSetScore.addEventListener('click', function () {
   const inputScore = inputWinningScore.value;
   if (inputScore && inputScore > 0) {
     winningScore = inputScore;
+    alert(`Winning score set to ${winningScore}`);
+  } else {
+    alert('Please enter a valid score');
   }
 });
