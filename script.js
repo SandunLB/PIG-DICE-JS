@@ -15,6 +15,8 @@ const btnSetScore = document.querySelector('.btn--set-score');
 const inputWinningScore = document.getElementById('winning-score');
 const modeToggle = document.getElementById('game-mode-toggle');
 const modeLabel = document.getElementById('mode-label');
+const playerName0 = document.getElementById('name--0');
+const playerName1 = document.getElementById('name--1');
 
 let scores, currentScore, activePlayer, playing, winningScore, singlePlayerMode;
 
@@ -37,6 +39,15 @@ const init = function () {
   player1El.classList.remove('player--winner');
   player0El.classList.add('player--active');
   player1El.classList.remove('player--active');
+
+  // Update player names based on mode
+  if (singlePlayerMode) {
+    playerName0.textContent = 'You';
+    playerName1.textContent = 'AI';
+  } else {
+    playerName0.textContent = 'Player 1';
+    playerName1.textContent = 'Player 2';
+  }
 
   modeLabel.textContent = singlePlayerMode ? 'Single Player' : 'Multiplayer';
 };
@@ -127,7 +138,7 @@ btnSetScore.addEventListener('click', function () {
 
 // Handle game mode toggle
 modeToggle.addEventListener('change', function () {
-  
+
   singlePlayerMode = modeToggle.checked;
   modeLabel.textContent = singlePlayerMode ? 'Single Player' : 'Multiplayer';
   init(); // Reinitialize the game when mode changes
