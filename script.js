@@ -50,11 +50,15 @@ const init = function () {
   }
 
   modeLabel.textContent = singlePlayerMode ? 'Single Player' : 'Multiplayer';
+  
+  // Enable buttons for the human player
+  btnRoll.disabled = false;
+  btnHold.disabled = false;
 };
 
 init();
 
-// Switch player
+// Switch player function
 const switchPlayer = function () {
   document.getElementById(`current--${activePlayer}`).textContent = 0;
   currentScore = 0;
@@ -63,33 +67,63 @@ const switchPlayer = function () {
   player1El.classList.toggle('player--active');
 
   if (singlePlayerMode && activePlayer === 1) {
-    setTimeout(aiTurn, 1000); // AI takes its turn after a delay
-  }
-};
-
-// AI Turn
-const aiTurn = function () {
-  if (!playing) return;
-
-  const dice = Math.trunc(Math.random() * 6) + 1;
-  diceEl.classList.remove('hidden');
-  diceEl.src = `dice-${dice}.png`;
-
-  if (dice !== 1) {
-    currentScore += dice;
-    document.getElementById(`current--${activePlayer}`).textContent = currentScore;
-
-    if (Math.random() > 0.5 || currentScore >= 20) {
-      btnHold.click(); // AI decides to hold
-    } else {
-      setTimeout(aiTurn, 1000); // AI rolls again after a delay
-    }
+    // AI's turn
+    aiTurn();
   } else {
-    switchPlayer(); // AI rolled a 1, switch back to Player 1
+    // Enable buttons for the human player
+    btnRoll.disabled = false;
+    btnHold.disabled = false;
   }
 };
 
-// Roll Dice
+// AI turn function
+const aiTurn = function () {
+  btnRoll.disabled = true;
+  btnHold.disabled = true;
+
+  // Random delay for AI to roll the dice (between 0.5 and 1.5 seconds)
+  const aiRollDelay = Math.random() * 1000 + 500;
+
+  setTimeout(() => {
+    const dice = Math.trunc(Math.random() * 6) + 1;
+    diceEl.classList.remove('hidden');
+    diceEl.src = `dice-${dice}.png`;
+
+    if (dice !== 1) {
+      currentScore += dice;
+      current1El.textContent = currentScore;
+
+      // Randomly decide whether to hold or roll again
+      const shouldHold = Math.random() > 0.5 || currentScore >= Math.floor(Math.random() * 30 + 10); // Random hold threshold between 10 and 40
+
+      if (shouldHold) {
+        // Random delay before AI decides to hold (between 1 and 2 seconds)
+        const aiHoldDelay = Math.random() * 1000 + 1000;
+
+        setTimeout(() => {
+          scores[1] += currentScore;
+          score1El.textContent = scores[1];
+
+          if (scores[1] >= winningScore) {
+            playing = false;
+            diceEl.classList.add('hidden');
+            player1El.classList.add('player--winner');
+            player1El.classList.remove('player--active');
+          } else {
+            switchPlayer();
+          }
+        }, aiHoldDelay);
+      } else {
+        aiTurn(); 
+      }
+    } else {
+      switchPlayer();
+    }
+  }, aiRollDelay); 
+};
+
+
+// Rolling dice functionality
 btnRoll.addEventListener('click', function () {
   if (playing) {
     const dice = Math.trunc(Math.random() * 6) + 1;
@@ -105,7 +139,7 @@ btnRoll.addEventListener('click', function () {
   }
 });
 
-// Hold Score
+// Hold score functionality
 btnHold.addEventListener('click', function () {
   if (playing) {
     scores[activePlayer] += currentScore;
@@ -122,10 +156,10 @@ btnHold.addEventListener('click', function () {
   }
 });
 
-// New Game
+// New Game functionality
 btnNew.addEventListener('click', init);
 
-// Set Winning Score
+// Set Winning Score functionality
 btnSetScore.addEventListener('click', function () {
   const inputScore = inputWinningScore.value;
   if (inputScore && inputScore > 0) {
@@ -138,7 +172,6 @@ btnSetScore.addEventListener('click', function () {
 
 // Handle game mode toggle
 modeToggle.addEventListener('change', function () {
-
   singlePlayerMode = modeToggle.checked;
   modeLabel.textContent = singlePlayerMode ? 'Single Player' : 'Multiplayer';
   init(); // Reinitialize the game when mode changes
