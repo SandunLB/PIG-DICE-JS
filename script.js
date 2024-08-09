@@ -27,7 +27,7 @@ const init = function () {
   currentScore = 0;
   activePlayer = 0;
   playing = true;
-  winningScore = 100; // Default winning score
+  winningScore = inputWinningScore.value ? Number(inputWinningScore.value) : 100; // Default or set winning score
   singlePlayerMode = modeToggle.checked;
 
   score0El.textContent = 0;
@@ -94,8 +94,8 @@ const aiTurn = function () {
     holdThreshold = 20; // Balanced approach
     rollDelay = Math.random() * 1000 + 1000; // Moderate speed
   } else if (difficulty === 'hard') {
-    holdThreshold = 25; // AI holds with a higher score, takes fewer risks
-    rollDelay = Math.random() * 1500 + 500; // Faster rolls
+    holdThreshold = 30; // AI holds with a higher score, takes fewer risks
+    rollDelay = Math.random() * 500 + 500; // Faster rolls
   }
 
   setTimeout(() => {
@@ -107,8 +107,21 @@ const aiTurn = function () {
       currentScore += dice;
       current1El.textContent = currentScore;
 
-      // Randomly decide whether to hold or roll again based on difficulty
-      const shouldHold = Math.random() > 0.5 || currentScore >= holdThreshold;
+      // More sophisticated decision-making for hard mode
+      let shouldHold;
+      if (difficulty === 'hard') {
+        if (scores[1] + currentScore >= winningScore) {
+          shouldHold = true;
+        } else if (scores[1] >= scores[0] && currentScore >= holdThreshold) {
+          shouldHold = true;
+        } else if (currentScore >= holdThreshold) {
+          shouldHold = Math.random() > 0.3; // AI tends to hold, but with some unpredictability
+        } else {
+          shouldHold = false;
+        }
+      } else {
+        shouldHold = Math.random() > 0.5 || currentScore >= holdThreshold;
+      }
 
       if (shouldHold) {
         // Random delay before AI decides to hold
@@ -175,7 +188,7 @@ btnNew.addEventListener('click', init);
 
 // Set Winning Score functionality
 btnSetScore.addEventListener('click', function () {
-  const inputScore = inputWinningScore.value;
+  const inputScore = Number(inputWinningScore.value);
   if (inputScore && inputScore > 0) {
     winningScore = inputScore;
     alert(`Winning score set to ${winningScore}`);
