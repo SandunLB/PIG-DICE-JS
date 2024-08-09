@@ -460,9 +460,24 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-/* Optional: Add some text style for the mode label */
+
 #mode-label {
   margin-left: 10px;
   font-size: 18px;
   font-weight: bold;
+}
+
+.difficulty-selector {
+  margin: 10px 0;
+}
+
+.difficulty-selector label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+#ai-difficulty {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #333;
 }
