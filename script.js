@@ -17,6 +17,7 @@ const modeToggle = document.getElementById('game-mode-toggle');
 const modeLabel = document.getElementById('mode-label');
 const playerName0 = document.getElementById('name--0');
 const playerName1 = document.getElementById('name--1');
+const aiDifficulty = document.getElementById('ai-difficulty'); // Difficulty selector
 
 let scores, currentScore, activePlayer, playing, winningScore, singlePlayerMode;
 
@@ -76,13 +77,26 @@ const switchPlayer = function () {
   }
 };
 
-// AI turn function
+// AI Decision Logic Based on Difficulty
 const aiTurn = function () {
   btnRoll.disabled = true;
   btnHold.disabled = true;
 
-  // Random delay for AI to roll the dice (between 0.5 and 1.5 seconds)
-  const aiRollDelay = Math.random() * 1000 + 500;
+  const difficulty = aiDifficulty.value; // Get selected difficulty
+
+  // Different behavior based on difficulty
+  let holdThreshold, rollDelay;
+
+  if (difficulty === 'easy') {
+    holdThreshold = 15; // AI holds with a lower score, takes more risks
+    rollDelay = Math.random() * 500 + 1000; // Slower rolls
+  } else if (difficulty === 'medium') {
+    holdThreshold = 20; // Balanced approach
+    rollDelay = Math.random() * 1000 + 1000; // Moderate speed
+  } else if (difficulty === 'hard') {
+    holdThreshold = 25; // AI holds with a higher score, takes fewer risks
+    rollDelay = Math.random() * 1500 + 500; // Faster rolls
+  }
 
   setTimeout(() => {
     const dice = Math.trunc(Math.random() * 6) + 1;
@@ -93,12 +107,12 @@ const aiTurn = function () {
       currentScore += dice;
       current1El.textContent = currentScore;
 
-      // Randomly decide whether to hold or roll again
-      const shouldHold = Math.random() > 0.5 || currentScore >= Math.floor(Math.random() * 30 + 10); // Random hold threshold between 10 and 40
+      // Randomly decide whether to hold or roll again based on difficulty
+      const shouldHold = Math.random() > 0.5 || currentScore >= holdThreshold;
 
       if (shouldHold) {
-        // Random delay before AI decides to hold (between 1 and 2 seconds)
-        const aiHoldDelay = Math.random() * 1000 + 1000;
+        // Random delay before AI decides to hold
+        const aiHoldDelay = Math.random() * 1000 + 500;
 
         setTimeout(() => {
           scores[1] += currentScore;
@@ -114,12 +128,12 @@ const aiTurn = function () {
           }
         }, aiHoldDelay);
       } else {
-        aiTurn(); 
+        aiTurn(); // AI rolls again
       }
     } else {
-      switchPlayer();
+      switchPlayer(); // AI rolls a 1, switches back to the human player
     }
-  }, aiRollDelay); 
+  }, rollDelay); // AI rolls after a delay based on difficulty
 };
 
 
