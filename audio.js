@@ -4,6 +4,9 @@ const switchTurnSound = new Audio('audio/switch-turn.mp3');
 const winSound = new Audio('audio/win.mp3');
 const backgroundMusic = new Audio('audio/background-music.mp3');
 
+// Set the background music volume to 50%
+backgroundMusic.volume = 0.1;
+
 // Background music toggle function
 let isMusicPlaying = false;
 function toggleMusic() {
