@@ -203,3 +203,6 @@ modeToggle.addEventListener('change', function () {
   modeLabel.textContent = singlePlayerMode ? 'Single Player' : 'Multiplayer';
   init(); // Reinitialize the game when mode changes
 });
+
+
+
