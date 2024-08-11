@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const playerName0 = document.getElementById('name--0');
   const playerName1 = document.getElementById('name--1');
   const aiDifficulty = document.getElementById('ai-difficulty'); // Difficulty selector
+  
 
   let scores, currentScore, activePlayer, playing, winningScore, singlePlayerMode;
 
