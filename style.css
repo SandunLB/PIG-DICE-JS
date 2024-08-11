@@ -183,7 +183,7 @@ main {
   font-size: 3.5rem;
 }
 
-/* ABSOLUTE POSITIONED ELEMENTS */
+
 .btn {
   position: absolute;
   left: 50%;
@@ -281,7 +281,7 @@ main {
   display: none;
 }
 
-/* ICONS */
+
 .btn--new::before, .btn--roll::before, .btn--hold::before {
   margin-right: 0.5rem;
 }
@@ -295,10 +295,10 @@ main {
 }
 
 .btn--hold::before {
-  content: ""; /* FontAwesome play icon */
+  content: ""; 
 }
 
-/* Generate Stars */
+
 @keyframes starMovement1 {
   0% {
     top: 0;
@@ -366,10 +366,10 @@ main {
 .star:nth-child(4) {
   animation: twinkle 5s infinite, starMovement4 18s linear infinite;
 }
-/* Add this to your existing CSS */
+
 .set-score {
   position: absolute;
-  top: 1rem;
+  top: 7rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -414,7 +414,7 @@ main {
   box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5);
 }
 
-/* Toggle Switch */
+
 .switch {
   position: relative;
   display: inline-block;
@@ -480,4 +480,55 @@ input:checked + .slider:before {
   padding: 5px;
   border-radius: 5px;
   border: 1px solid #333;
+}
+.top-controls {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+.set-score,
+.mode-toggle,
+.difficulty-selector,
+.btn--music {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.set-score {
+  flex-direction: row;
+}
+
+.mode-toggle {
+  flex-direction: row;
+  align-items: center;
+}
+
+.difficulty-selector {
+  flex-direction: row;
+}
+
+.btn--music {
+  background: #28a745;
+  color: #fff;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 50rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn--music:hover {
+  background: #218838;
 }

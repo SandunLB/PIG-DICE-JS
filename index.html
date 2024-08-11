@@ -17,26 +17,29 @@
     <div class="star" style="top: 35%; left: 85%;"></div>
   </div>
 
-  <div class="set-score">
-    <input type="number" id="winning-score" class="input-score" placeholder="Set Winning Score //Default is 100" />
-    <button class="btn--set-score">Set Score</button>
+  <div class="top-controls">
+    <div class="set-score">
+      <input type="number" id="winning-score" class="input-score" placeholder="Set Winning Score //Default is 100" />
+      <button class="btn--set-score">Set Score</button>
+    </div>
+    <div class="mode-toggle">
+      <label class="switch">
+        <input type="checkbox" id="game-mode-toggle">
+        <span class="slider round"></span>
+      </label>
+      <span id="mode-label">Multiplayer</span>
+    </div>
+    <div class="difficulty-selector">
+      <label>Select AI Difficulty:</label>
+      <select id="ai-difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+    </div>
+    <button class="btn--music">Toggle Music</button>
   </div>
-  <div class="mode-toggle">
-    <label class="switch">
-      <input type="checkbox" id="game-mode-toggle">
-      <span class="slider round"></span>
-    </label>
-    <span id="mode-label">Multiplayer</span>
-  </div>
-  <div class="difficulty-selector">
-    <label>Select AI Difficulty:</label>
-    <select id="ai-difficulty">
-      <option value="easy">Easy</option>
-      <option value="medium">Medium</option>
-      <option value="hard">Hard</option>
-    </select>
-  </div>
-  <button class="btn--music">Toggle Music</button>
+  
 
 
   <main>
