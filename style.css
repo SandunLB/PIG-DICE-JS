@@ -49,6 +49,107 @@ body {
   50% { opacity: 1; }
 }
 
+/* Container for new background elements */
+.background-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  overflow: hidden;
+}
+
+/* Common styles for planets */
+.planet {
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Specific planets */
+.planet-1 {
+  width: 100px;
+  height: 100px;
+  background-image: url('images/planet-1.png');
+  top: 20%;
+  left: 10%;
+  animation: planetMovement 20s linear infinite;
+}
+
+.planet-2 {
+  width: 100px;
+  height: 100px;
+  background-image: url('images/planet-2.png');
+  top: 70%;
+  left: 80%;
+  animation: planetMovement 25s linear infinite reverse;
+}
+.planet-3 {
+  width: 100px;
+  height: 100px;
+  background-image: url('images/planet-3.jpg');
+  top: 90%;
+  left: 10%;
+  animation: planetMovement 25s linear infinite reverse;
+}
+
+/* Common styles for galaxies */
+.galaxy {
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Specific galaxies */
+.galaxy-1 {
+  width: 100px;
+  height: 100px;
+  background-image: url('images/galaxy-1.png');
+  top: 10%;
+  left: 80%;
+  animation: galaxyRotation 550s linear infinite;
+}
+
+.galaxy-2 {
+  width: 50px;
+  height: 50px;
+  background-image: url('images/galaxy-2.jpg');
+  top: 50%;
+  left: 20%;
+  animation: galaxyRotation 60s linear infinite reverse;
+}
+.galaxy-3 {
+  width: 25px;
+  height: 25px;
+  background-image: url('images/galaxy-3.jpg');
+  top: 2%;
+  left: 90%;
+  animation: galaxyRotation 30s linear infinite reverse;
+}
+
+/* Animations */
+@keyframes planetMovement {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes galaxyRotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* Layout */
 main {
   position: relative;
