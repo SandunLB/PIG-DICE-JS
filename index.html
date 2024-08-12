@@ -73,6 +73,20 @@
     <button class="btn btn--roll">🎲 Roll dice</button>
     <button class="btn btn--hold">📥 Hold</button>
   </main>
+  <footer>
+    <div class="footer-content">
+      <button id="about-toggle" class="footer-btn">About</button>
+      <div id="about-section" class="about-section">
+        <h3>About Me</h3>
+        <p>Web developer with expertise in PHP, JavaScript, and modern frameworks. Passionate about creating innovative solutions.</p>
+        <p>Email: <a href="mailto:sandunlb2001@gmail.com">sandunlb2001@gmail.com</a></p>
+        <p>GitHub: <a href="https://github.com/SandunLB" target="_blank">github.com/SandunLB</a></p>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 Sandun Lakshitha. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
   <script src="script.js"></script>
   <script src="audio.js"></script>
 
@@ -91,7 +105,17 @@
       }
     });
 
-    
+    document.getElementById('about-toggle').addEventListener('click', () => {
+  const aboutSection = document.getElementById('about-section');
+  aboutSection.classList.toggle('expanded');
+});
+
+document.addEventListener('click', (event) => {
+  const aboutSection = document.getElementById('about-section');
+  if (!aboutSection.contains(event.target) && event.target.id !== 'about-toggle') {
+    aboutSection.classList.remove('expanded');
+  }
+});
   </script>
 </body>
 </html>
