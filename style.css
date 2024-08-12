@@ -311,3 +311,113 @@ main {
 .btn--music:active {
   background-color: #0056b3;
 }
+/* Modern Styles for Mode Toggle, Difficulty Selector, and Music Button */
+
+.mode-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.mode-toggle .switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.mode-toggle .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.mode-toggle .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 26px;
+}
+
+.mode-toggle .slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+.mode-toggle input:checked + .slider {
+  background-color: #28a745;
+}
+
+.mode-toggle input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+.mode-toggle #mode-label {
+  font-size: 1.6rem;
+  color: #ddd;
+}
+
+.difficulty-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  border-radius: 10px;
+  gap: 0.5rem;
+}
+
+.difficulty-selector label {
+  font-size: 1.4rem;
+  color: #ddd;
+}
+
+.difficulty-selector select {
+  font-size: 1.4rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  background: #fff;
+  color: #333;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.btn--music {
+  background: #007bff;
+  color: white;
+  border: none;
+  font-size: 1.6rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0.8rem 1.6rem rgba(0, 0, 0, 0.2);
+}
+
+.btn--music:hover {
+  background-color: #0056b3;
+}
+
+.btn--music:active {
+  background-color: #003d7a;
+  box-shadow: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.2);
+}
